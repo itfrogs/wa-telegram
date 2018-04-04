@@ -1,0 +1,87 @@
+{strip}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{$wa->title()|escape}</title>
+    {* CSS *}
+    <link rel="stylesheet" href="{$wa_url}wa-content/css/jquery-ui/base/jquery.ui.all.css?{$wa->version(true)}">
+    <link rel="stylesheet" href="{$wa_url}wa-content/js/farbtastic/farbtastic.css?{$wa->version(true)}">
+    {$wa->css()}
+    <link rel="stylesheet" href="{$wa_app_static_url}css/telegram.css?{$wa->version()}">
+
+    {* JS *}
+    <script src="{$wa_url}wa-content/js/jquery/jquery-1.11.1.min.js?{$wa->version(true)}"></script>
+    {/strip}{wa_js file="js/compiled/telegram-external.min.js" uibundle=''}
+        {$wa_url}wa-content/js/jquery/jquery-migrate-1.2.1.min.js
+        {$wa_url}wa-content/js/jquery-ui/jquery.ui.core.min.js
+        {$wa_url}wa-content/js/jquery-ui/jquery.ui.widget.min.js
+        {$wa_url}wa-content/js/jquery-ui/jquery.ui.mouse.min.js
+        {$wa_url}wa-content/js/jquery-plugins/jquery.store.js
+        {$wa_url}wa-content/js/jquery-wa/wa.core.js
+        {$wa_url}wa-content/js/jquery-wa/wa.dialog.js
+    {/wa_js}{wa_js file="js/compiled/telegram.min.js"}
+        {$wa_app_static_url}js/telegram.js
+    {/wa_js}{strip}
+    {* @event backend_assets.%plugin_id% *}
+    {foreach $backend_assets as $item}
+        {$item}
+    {/foreach}
+    {$wa->js()}
+    <script>
+        ( function($) {
+            $.telegram.title_pattern = "%s — {$wa->accountName()}";
+        })(jQuery);
+    </script>
+</head>
+<body>
+<div id="wa">
+    {* HEADER *}
+    {$wa->header()}
+    {*APP*}
+    <div id="wa-app">
+        <div class="a-main-wrapper" id="a-main-wrapper">
+            {* SIDEBAR *}
+            {if empty($hide_sidebar)}
+                <section class="a-sidebar-wrapper sidebar left200px" id="a-sidebar-wrapper">
+                    {$sidebar}
+                </section>
+            {/if}
+            {* CONTENT *}
+            <section class="a-content-wrapper">
+                <div class="a-content-block" id="a-content-block">
+                    {$content}
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script>
+(function($) {
+    $.telegram.is_debug = {$is_debug},
+    $.telegram.app_url = {$wa_app_url|json_encode};
+{*
+    $.plugins.helper.getContentUrl = function ($item, path) {
+        var url = '';
+        if ($item.data('url')) {
+            url = $item.data('url');
+        } else if ($item.data('settings')) {
+            url = '?plugin=' + path.plugin + '&module=settings';
+            if (path.plugin != path.tail) url = url + "&id="+path.tail;
+        } else if (path.plugin) {
+            url = '?module=plugins&action=settings&id=' + path.plugin;
+        }
+        return url;
+    },
+
+    $(window).bind('hashchange', function() {
+        $.plugins.dispatch(location.hash, true);
+    });
+*}
+})(jQuery);
+
+</script>
+</body>
+</html>
+{/strip}

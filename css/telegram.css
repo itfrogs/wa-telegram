@@ -1,0 +1,114 @@
+#wa-app {
+  overflow: inherit;
+}
+#wa-app:before,
+#wa-app:after {
+  display: none;
+}
+#wa-app .a-main-wrapper {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+#wa-app .a-main-wrapper > .a-sidebar-wrapper,
+#wa-app .a-main-wrapper > .a-content-wrapper {
+  float: none;
+  display: table-cell;
+  vertical-align: top;
+}
+#wa-app .a-main-wrapper > .a-content-wrapper {
+  margin: 0;
+  padding: 15px;
+}
+#wa-app .a-main-wrapper > .a-content-wrapper .shadowed {
+  margin: 0;
+}
+#wa-app .a-main-wrapper > .a-content-wrapper .a-content-block {
+  position: relative;
+  min-height: 600px;
+}
+
+.a-layout {
+  display: table;
+  width: 100%;
+}
+.a-layout.inline {
+  width: auto;
+}
+.a-layout.fixed {
+  table-layout: fixed;
+}
+.a-layout > .a-column {
+  display: table-cell;
+  vertical-align: top;
+}
+.a-layout > .a-column.middle {
+  vertical-align: middle;
+}
+.a-layout > .a-column.center {
+  text-align: center;
+}
+.a-layout > .a-column.right {
+  text-align: right;
+}
+
+
+.a-settings-page > .a-layout {
+  table-layout: fixed;
+}
+.a-settings-page .sidebar,
+.a-settings-page .content {
+  float: none;
+}
+.a-settings-page .a-page-header {
+  margin: 0 0 16px;
+}
+.a-settings-page .a-page-header:first-child {
+  margin-top: 0;
+}
+.a-settings-page .a-page-header:last-child {
+  margin-bottom: 0;
+}
+.a-settings-page .a-settings-sidebar .menu-v li:first-child {
+  margin-top: 0;
+}
+.a-settings-page .a-settings-sidebar .menu-v li a {
+  color: #777;
+}
+.a-settings-page .a-settings-sidebar .menu-v li a .icon16 {
+  opacity: 0.3;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  filter: alpha(opacity=30);
+  -webkit-transition: opacity 200ms linear;
+  -moz-transition: opacity 200ms linear;
+  -o-transition: opacity 200ms linear;
+  -ms-transition: opacity 200ms linear;
+  transition: opacity 200ms linear;
+}
+.a-settings-page .a-settings-sidebar .menu-v li.selected a {
+  color: #000;
+}
+.a-settings-page .a-settings-sidebar .menu-v li.selected a .icon16 {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+
+.telegram-form-buttons {
+  margin-top: 40px;
+  padding: 10px 0;
+  background-color: #fff;
+}
+
+.telegram-generate-settings-page .telegram-form-buttons {
+  float: left;
+  width: 100%;
+  padding: 20px 0 14px 0;
+  background-color: #fff;
+}
+
+.a-sidebar-wrapper {
+    margin: 0;
+    padding: 27px 0 0 0;
+}
