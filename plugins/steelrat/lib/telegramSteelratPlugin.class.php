@@ -59,4 +59,31 @@ class telegramSteelratPlugin extends telegramPlugin
         $plugin = self::getPlugin();
         return $view->fetch($plugin->getPluginPath() . '/templates/controls/feedbackControl.html');
     }
+
+    /**
+     * @return string
+     * @throws waException
+     */
+    public static function getBotUrlControl()
+    {
+        $view = self::getView();
+        $plugin = self::getPlugin();
+        $telegramUrl = wa('telegram')->getRouteUrl('telegram/frontend', array(), true);
+        $view->assign('plugin_url', $telegramUrl . 'steelrat/bot');
+        return $view->fetch($plugin->getPluginPath() . '/templates/controls/botUrlControl.html');
+    }
+
+    /**
+     * @return string
+     * @throws waException
+     */
+    public static function getWebhookUrlControl()
+    {
+        $view = self::getView();
+        $plugin = self::getPlugin();
+        $telegramUrl = wa('telegram')->getRouteUrl('telegram/frontend', array(), true);
+        $view->assign('plugin_url', $telegramUrl . 'steelrat/bot');
+        $view->assign('settings', $plugin->getSettings());
+        return $view->fetch($plugin->getPluginPath() . '/templates/controls/webhookUrlControl.html');
+    }
 }

@@ -42,3 +42,19 @@ msgstr ""
 #: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:18
 msgid "Click on the link to contact the developer."
 msgstr ""
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:18
+msgid "Bot URL"
+msgstr ""
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:19
+msgid "The Internet address on which the bot works."
+msgstr ""
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:24
+msgid "setWebhook URL"
+msgstr ""
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:25
+msgid "Internet address for registering a bot link."
+msgstr ""

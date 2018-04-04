@@ -5,6 +5,10 @@
  * Date: 4/2/18
  * Time: 8:53 PM
  */
+
+/*
+ * Подключаем вендора https://github.com/irazasyed/telegram-bot-sdk
+ */
 require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk/autoload.php';
 
 use Telegram\Bot\Api;

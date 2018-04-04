@@ -43,3 +43,19 @@ msgstr "Запросить техническую поддержку"
 #: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:18
 msgid "Click on the link to contact the developer."
 msgstr "Перейдите по ссылке, чтобы связаться с разработчиком."
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:18
+msgid "Bot URL"
+msgstr "Интернет адрес бота"
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:19
+msgid "The Internet address on which the bot works."
+msgstr "Интернет адрес, по которому работает бот"
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:24
+msgid "setWebhook URL"
+msgstr ""
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:25
+msgid "Internet address for registering a bot link."
+msgstr "Интернет адрес для регистрации ссылки на бота. Обязательно задайте Bot token и перезагрузите страницу для получения правильной ссылки."

@@ -65,7 +65,6 @@ class telegramSteelratPluginFrontendBotController extends waController
         $this->telegram = new telegramApi($this->settings['key']);
     }
 
-
     /**
      * @throws waException
      */
@@ -83,7 +82,7 @@ class telegramSteelratPluginFrontendBotController extends waController
         $error = false;
         $sended = false;
 
-        //Проверяем точно ли к нам стучится телеграм
+        //Проверяем точно ли к нам стучится телеграм. Если в запросе есть необходимые данные, то выполняем действия.
         if(isset($result["message"]) && isset($result["message"]["text"]) && !empty($result["message"]["text"])){
             $this->params = array(
                 'text'          => isset($result["message"]["text"]) ? $result["message"]["text"] : null, //Текст сообщения
