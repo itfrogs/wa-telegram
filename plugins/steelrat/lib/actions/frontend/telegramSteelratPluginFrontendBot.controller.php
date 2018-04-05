@@ -142,7 +142,7 @@ class telegramSteelratPluginFrontendBotController extends waController
                 }
                 else {
                     $book = $book_model->getById($this->params['book_id']);
-                    $text = $book['text'];
+                    $text = html_entity_decode($book['text']);
                     $keyboard = [
                         json_decode($book['links']),
                     ];
