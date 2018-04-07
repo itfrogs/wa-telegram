@@ -3,6 +3,6 @@
 return array(
     'php' => array(
         'strict' => true,
-        'version' => '>=7.0.2',
+        'version' => '>=5.6.0',
     ),
 );
