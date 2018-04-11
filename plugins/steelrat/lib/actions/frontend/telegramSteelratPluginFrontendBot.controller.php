@@ -156,11 +156,20 @@ class telegramSteelratPluginFrontendBotController extends waController
                     ]
                 );
 
-                $this->telegram->sendMessage([
-                    'chat_id' => $this->params['chat_id'],
-                    'text' => $text,
-                    'reply_markup' => $reply_markup
-                ]);
+                try {
+                    $this->telegram->sendMessage([
+                        'chat_id' => $this->params['chat_id'],
+                        'text' => $text,
+                        'reply_markup' => $reply_markup
+                    ]);
+                } catch (Exception $e) {
+                    if ($e->getMessage() && $e->getMessage() == 'Forbidden: bot was blocked by the user') {
+                        $this->stop($this->params);
+                        if (waSystemConfig::isDebug()) {
+                            waLog::log('Пользователь ' . !empty($user['name']) ? $user['name'] : $user['chat_id'] . ' забанил бота и был отписан.', 'telegram-steelrat-ban.log');
+                        }
+                    }
+                }
 
             }
             elseif (!$sended && $error) {
