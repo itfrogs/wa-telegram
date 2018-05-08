@@ -68,8 +68,9 @@ class telegramSteelratPlugin extends telegramPlugin
     {
         $view = self::getView();
         $plugin = self::getPlugin();
-        $telegramUrl = wa('telegram')->getRouteUrl('telegram/frontend', array(), true);
-        $view->assign('plugin_url', $telegramUrl . 'steelrat/bot');
+        $settlements = self::getSettlements();
+        $view->assign('settlements', $settlements);
+
         return $view->fetch($plugin->getPluginPath() . '/templates/controls/botUrlControl.html');
     }
 
@@ -81,9 +82,41 @@ class telegramSteelratPlugin extends telegramPlugin
     {
         $view = self::getView();
         $plugin = self::getPlugin();
-        $telegramUrl = wa('telegram')->getRouteUrl('telegram/frontend', array(), true);
-        $view->assign('plugin_url', $telegramUrl . 'steelrat/bot');
+        $settlements = self::getSettlements();
+        $view->assign('settlements', $settlements);
         $view->assign('settings', $plugin->getSettings());
         return $view->fetch($plugin->getPluginPath() . '/templates/controls/webhookUrlControl.html');
+    }
+
+    /**
+     * @return string
+     * @throws waException
+     */
+    public static function getHttpsCheckControl()
+    {
+        $view = self::getView();
+        $plugin = self::getPlugin();
+        $view->assign('is_https', waRequest::isHttps());
+        return $view->fetch($plugin->getPluginPath() . '/templates/controls/httpsCheckControl.html');
+    }
+
+
+    /**
+     * @return array
+     * @throws waException
+     */
+    public static function getSettlements()
+    {
+        $settlements = array();
+        $routing = wa()->getRouting();
+        $domain_routes = $routing->getByApp('telegram');
+        foreach ($domain_routes as $domain => $routes) {
+            foreach ($routes as $route) {
+                $routing->setRoute($route, $domain);
+                $settlement = wa('telegram')->getRouteUrl('telegram/frontend', array(), true);
+                $settlements[] = $settlement;
+            }
+        }
+        return $settlements;
     }
 }

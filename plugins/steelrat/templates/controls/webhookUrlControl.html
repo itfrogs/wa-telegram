@@ -1,1 +1,8 @@
-<strong>https://api.telegram.org/bot{if !empty($settings.key)}{$settings.key}{else}BOT_TOKEN{/if}/setWebhook?url={$plugin_url}</strong>
+{if !empty($settlements)}
+    {foreach $settlements as $settlement}
+        <strong>https://api.telegram.org/bot{if !empty($settings.key)}{$settings.key}{else}BOT_TOKEN{/if}/setWebhook?url={$settlement}steelrat/bot</strong><br />
+    {/foreach}
+{else}
+    [`No app settlement specified`]
+{/if}
+

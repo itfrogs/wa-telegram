@@ -59,3 +59,69 @@ msgstr ""
 #: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:25
 msgid "Internet address for registering a bot link."
 msgstr "Интернет адрес для регистрации ссылки на бота. Обязательно задайте Bot token и перезагрузите страницу для получения правильной ссылки."
+
+#: /wa-apps/telegram/plugins/steelrat/templates/controls/botUrlControl.html:6
+#: /wa-apps/telegram/plugins/steelrat/templates/controls/webhookUrlControl.html:6
+msgid "No app settlement specified"
+msgstr "Не задано поселение для приложения"
+
+#: /wa-apps/telegram/plugins/steelrat/templates/controls/httpsCheckControl.html:2
+msgid "Verification passed"
+msgstr "Проверка пройдена"
+
+#: /wa-apps/telegram/plugins/steelrat/templates/controls/httpsCheckControl.html:4
+msgid "Verification not passed"
+msgstr "Проверка не пройдена"
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:11
+msgid "HTTPS check"
+msgstr "Проверка HTTPS"
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:12
+msgid "If not https, the bot will not work."
+msgstr "Если не https, бот не будет работать."
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:25
+msgid "Use socks5 proxy"
+msgstr "Использовать socks5 прокси"
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:26
+msgid "If enabled, the socks5 proxy will be used."
+msgstr "Если включено, будет использовано socks5 прокси."
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:32
+msgid "Socks5 proxy address"
+msgstr "Адрес socks5 прокси"
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:33
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:40
+msgid "If empty, the proxy will be disabled."
+msgstr "Если не заполнено, прокси не будет работать."
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:39
+msgid "Socks5 proxy port"
+msgstr "Порт socks5 прокси"
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:46
+msgid "Socks5 proxy user"
+msgstr "Пользователь socks5 прокси"
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:47
+msgid "If empty, the login and password will not be used."
+msgstr "Если не заполнено, логин и пароль не будут использованы."
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:53
+msgid "Socks5 proxy password"
+msgstr "Пароль socks5 прокси"
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:54
+msgid "If empty, the password will not be used."
+msgstr "Если не заполнено, пароль не будет использован."
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:66
+msgid "If api.telegram.org is blocked for you, use the Tor Browser or other method of bypass blocking to activate the bot."
+msgstr "Если api.telegram.орг для вас заблокирован, для активации бота воспользуйтесь браузером Tor или другим способом обхода блокировок."
+
+#: /wa-apps/telegram/plugins/steelrat/lib/config/settings.php:66
+msgid "Internet address for registering a bot link. If api.telegram.org is blocked for you, use the Tor Browser or other method of bypass blocking to activate the bot."
+msgstr "Интернет адрес для регистрации ссылки на бота. Обязательно задайте Bot token и перезагрузите страницу для получения правильной ссылки. Если api.telegram.орг для вас заблокирован, для активации бота воспользуйтесь браузером Tor или другим способом обхода блокировок."

@@ -1,1 +1,7 @@
-<strong>{$plugin_url}</strong>
+{if !empty($settlements)}
+    {foreach $settlements as $settlement}
+        <strong>{$settlement}steelrat/bot</strong><br />
+    {/foreach}
+{else}
+    [`No app settlement specified`]
+{/if}
