@@ -14,6 +14,7 @@ use Telegram\Bot\Objects\Message;
 use Telegram\Bot\Objects\Update;
 use Telegram\Bot\Objects\User;
 use Telegram\Bot\Objects\UserProfilePhotos;
+use GuzzleHttp\Client;
 
 /**
  * Class Api.
@@ -109,6 +110,7 @@ class Api
 
         $this->client = new TelegramClient($httpClientHandler);
     }
+
 
     /**
      * Returns the TelegramClient service.

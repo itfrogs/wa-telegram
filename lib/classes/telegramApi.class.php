@@ -20,4 +20,12 @@ class telegramApi extends Api
         parent::__construct($token, $async, $http_client_handler);
     }
 
+    /**
+     * @param $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+
 }
