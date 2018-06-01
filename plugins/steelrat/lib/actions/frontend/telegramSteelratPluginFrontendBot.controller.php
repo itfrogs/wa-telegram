@@ -122,7 +122,6 @@ class telegramSteelratPluginFrontendBotController extends waController
 
         //Передаем в переменную $result полную информацию о сообщении пользователя
         $result = $this->telegram->getWebhookUpdates();
-        waLog::dump($result, 'result.log');
 
         $user_model = new telegramSteelratPluginUserModel();
         $book_model = new telegramSteelratPluginBookModel();
