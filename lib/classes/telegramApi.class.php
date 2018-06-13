@@ -15,7 +15,7 @@ use Telegram\Bot\Api;
 
 class telegramApi extends Api
 {
-    public function __construct(string $token = null, bool $async = false, $http_client_handler = null)
+    public function __construct($token = null, $async = false, $http_client_handler = null)
     {
         parent::__construct($token, $async, $http_client_handler);
     }
