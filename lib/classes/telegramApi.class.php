@@ -28,4 +28,14 @@ class telegramApi extends Api
         $this->client = $client;
     }
 
+
+    /**
+     * @param $endpoint
+     * @param array $params
+     * @param bool $fileUpload
+     * @throws \Telegram\Bot\Exceptions\TelegramSDKException
+     */
+    public function telegramPost($endpoint, array $params = [], $fileUpload = false) {
+        $this->post($endpoint, $params, $fileUpload);
+    }
 }
