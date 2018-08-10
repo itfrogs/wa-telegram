@@ -5,6 +5,8 @@ namespace Telegram\Bot;
 use Illuminate\Contracts\Container\Container;
 use Telegram\Bot\Commands\CommandBus;
 use Telegram\Bot\Commands\CommandInterface;
+use Telegram\Bot\Exceptions\TelegramOtherException;
+use Telegram\Bot\Exceptions\TelegramResponseException;
 use Telegram\Bot\Exceptions\TelegramSDKException;
 use Telegram\Bot\FileUpload\InputFile;
 use Telegram\Bot\HttpClients\GuzzleHttpClient;
@@ -1145,5 +1147,43 @@ class Api
         $this->connectTimeOut = $connectTimeOut;
 
         return $this;
+    }
+
+    /**
+     * @param array $params
+     * @return mixed
+     */
+    public function getChat(array $params)
+    {
+        try {
+            $response = $this->post('getChat', $params);
+            $response_array = $response->getDecodedBody();
+            unset($response);
+            if (isset($response_array['ok']) && isset($response_array['result']) && $response_array['ok']) {
+                return $response_array['result'];
+            }
+            else return null;
+        } catch (TelegramResponseException $e) {
+            return null;
+        }
+    }
+
+    /**
+     * @param array $params
+     * @return mixed
+     */
+    public function getChatMember(array $params)
+    {
+        try {
+            $response = $this->post('getChatMember', $params);
+            $response_array = $response->getDecodedBody();
+            unset($response);
+            if (isset($response_array['ok']) && isset($response_array['result']) && $response_array['ok']) {
+                return $response_array['result'];
+            }
+            else return null;
+        } catch (TelegramResponseException $e) {
+            return null;
+        }
     }
 }
