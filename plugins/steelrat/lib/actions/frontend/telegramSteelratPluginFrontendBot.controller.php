@@ -217,7 +217,6 @@ class telegramSteelratPluginFrontendBotController extends waController
                         }
                     }
                 }
-
             }
             elseif (!$sended && $error) {
                 $this->telegram->sendMessage([ 'chat_id' => $this->params['chat_id'], 'text' => $error]);
