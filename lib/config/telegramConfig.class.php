@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class telegramConfig
+ */
 class telegramConfig extends waAppConfig
 {
     /**
@@ -7,11 +10,22 @@ class telegramConfig extends waAppConfig
      */
     protected $asm;
 
+    /**
+     *
+     */
     const ROWS_PER_PAGE = 30;
 
+    /**
+     * @var
+     */
     protected static $max_execution_time;
 
     // see also a hack in FrontController->dispatch()
+
+    /**
+     * @param array $route
+     * @return array|mixed|null
+     */
     public function getRouting($route = array())
     {
         if ($this->routes === null) {
@@ -20,6 +34,10 @@ class telegramConfig extends waAppConfig
         return $this->routes;
     }
 
+    /**
+     * @param $type
+     * @return string
+     */
     protected function getRoutingPath($type)
     {
         if ($type === null) {
@@ -33,6 +51,10 @@ class telegramConfig extends waAppConfig
         return $path;
     }
 
+    /**
+     * @param array $route
+     * @return array
+     */
     protected function getRoutingRules($route = array())
     {
         $routes = array();
@@ -51,6 +73,10 @@ class telegramConfig extends waAppConfig
         return array_merge($this->getPluginRoutes($route), $routes);
     }
 
+    /**
+     * @param null $default
+     * @return int|null
+     */
     public function getMaxExecutionTime($default = null)
     {
         if (self::$max_execution_time === null) {
@@ -62,6 +88,10 @@ class telegramConfig extends waAppConfig
         return self::$max_execution_time > 0 ? self::$max_execution_time : $default;
     }
 
+    /**
+     * @param $route
+     * @return array
+     */
     protected function getPluginRoutes($route)
     {
         /**
@@ -98,5 +128,22 @@ class telegramConfig extends waAppConfig
     protected function getSettingsModel()
     {
         return $this->asm !== null ? $this->asm : ($this->asm = new waAppSettingsModel());
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getPlugins()
+    {
+        $fix = $this->plugins === null;
+        parent::getPlugins();
+        if ($fix) {
+            foreach ($this->plugins as $p_id => $p) {
+                if (!empty($p['telegram_settings'])) {
+                    $this->plugins[$p_id]['custom_settings_url'] = '?plugin='.$p['id'].'&module=backend&action=settings';
+                }
+            }
+        }
+        return $this->plugins;
     }
 }
