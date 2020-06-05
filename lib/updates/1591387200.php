@@ -7,7 +7,7 @@
  */
 
 try {
-    $path = wa()->getAppPath(null, 'telegram') . '/vendors/telegram-bot-sdk/';
+    $path = wa()->getAppPath(null, 'telegram') . '/lib/vendors/telegram-bot-sdk/';
     waFiles::delete($path, true);
 }
 catch (waException $e) {
