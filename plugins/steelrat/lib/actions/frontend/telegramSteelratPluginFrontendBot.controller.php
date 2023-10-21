@@ -105,11 +105,16 @@ class telegramSteelratPluginFrontendBotController extends waController
                 );
             }
         }
-        $client = new Client($options);
-        $httpClientHandler = new GuzzleHttpClient($client);
-        $this->telegram->setClient(new TelegramClient($httpClientHandler));
+        try {
+            $httpClientHandler = $this->telegram->getGuzzleClientHandler($options);
+        }
+        catch (Exception $exception) {
+            if (waSystemConfig::isDebug()) {
+                waLog::dump($exception->getMessage(), 'telegram/steelrat-get-http-client.log');
+            }
+        }
 
-        //waRequest::isHttps()
+        $this->telegram->setClient(new TelegramClient($httpClientHandler));
     }
 
     /**
@@ -121,7 +126,8 @@ class telegramSteelratPluginFrontendBotController extends waController
         $view = self::getView();
 
         //Передаем в переменную $result полную информацию о сообщении пользователя
-        $result = $this->telegram->getWebhookUpdates();
+        $result = $this->telegram->getWebhookUpdate();
+        $result_array = $result->toArray();
 
         $user_model = new telegramSteelratPluginUserModel();
         $book_model = new telegramSteelratPluginBookModel();
@@ -130,11 +136,14 @@ class telegramSteelratPluginFrontendBotController extends waController
         $sended = false;
 
         //Проверяем точно ли к нам стучится телеграм. Если в запросе есть необходимые данные, то выполняем действия.
+
+        //if(isset($result_array['callback_query']) && isset($result_array['callback_query']['data']) && !empty($result_array['callback_query']['data'])){
         if(isset($result["message"]) && isset($result["message"]["text"]) && !empty($result["message"]["text"])){
             $this->params = array(
+                //'text'          => isset($result_array['callback_query']['data']) ? $result["message"]["text"] : null, //Текст сообщения
                 'text'          => isset($result["message"]["text"]) ? $result["message"]["text"] : null, //Текст сообщения
-                'chat_id'       => $result["message"]["chat"]["id"], //Уникальный идентификатор пользователя
-                'name'          => $result["message"]["from"]["username"], //Юзернейм пользователя
+                'chat_id'       => $result_array["message"]["chat"]["id"], //Уникальный идентификатор пользователя
+                'name'          => $result_array["message"]["from"]["username"], //Юзернейм пользователя
             );
 
             if ($this->params['text'] == "/start" || $this->params['text'] == "start") {
@@ -213,7 +222,7 @@ class telegramSteelratPluginFrontendBotController extends waController
                     if ($e->getMessage() && $e->getMessage() == 'Forbidden: bot was blocked by the user') {
                         $this->stop($this->params);
                         if (waSystemConfig::isDebug()) {
-                            waLog::log('Пользователь ' . !empty($user['name']) ? $user['name'] : $user['chat_id'] . ' забанил бота и был отписан.', 'telegram-steelrat-ban.log');
+                            waLog::log('Пользователь ' . !empty($user['name']) ? $user['name'] : $user['chat_id'] . ' забанил бота и был отписан.', 'telegram/steelrat-ban.log');
                         }
                     }
                 }
