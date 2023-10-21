@@ -9,13 +9,24 @@
 /*
  * Подключаем вендора https://github.com/irazasyed/telegram-bot-sdk
  */
-//require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.0/autoload.php';
-require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-2.0/autoload.php';
+require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.9/autoload.php';
 
+use GuzzleHttp\Client;
 use Telegram\Bot\Api;
+use Telegram\Bot\BotsManager;
+use Telegram\Bot\HttpClients\GuzzleHttpClient;
 
+/**
+ *
+ */
 class telegramApi extends Api
 {
+    /**
+     * @param $token
+     * @param $async
+     * @param $http_client_handler
+     * @throws \Telegram\Bot\Exceptions\TelegramSDKException
+     */
     public function __construct($token = null, $async = false, $http_client_handler = null)
     {
         parent::__construct($token, $async, $http_client_handler);
@@ -29,6 +40,31 @@ class telegramApi extends Api
         $this->client = $client;
     }
 
+    /**
+     * @param $options
+     * @return GuzzleHttpClient
+     */
+    public function getGuzzleClientHandler($options) {
+        $client = $this->getGuzzleClient($options);
+        return new GuzzleHttpClient($client);
+    }
+
+    /**
+     * @param $options
+     * @return Client
+     */
+    public function getGuzzleClient($options) {
+        $client = new Client($options);
+        return $client;
+    }
+
+    /**
+     * @param $config
+     * @return BotsManager
+     */
+    public function getBot($config) {
+        return new BotsManager($config);
+    }
 
     /**
      * @param $endpoint

@@ -8,7 +8,7 @@ return array (
     24 => 'img/telegram24.png',
     16 => 'img/telegram16.png',
   ),
-  'version' => '2.0.0',
+  'version' => '2.1.0',
   'vendor' => '964801',
   'plugins' => true,
   'frontend' => true,
