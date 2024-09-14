@@ -11,6 +11,16 @@
  */
 require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.9/autoload.php';
 
+if (PHP_VERSION_ID >= 70400 && PHP_VERSION_ID < 80000) {
+    require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.9/autoload.php';
+}
+elseif (PHP_VERSION_ID >= 80000) {
+    require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.14/autoload.php';
+}
+else {
+    throw new waException('PHP 7.4 or higher is required.');
+}
+
 use GuzzleHttp\Client;
 use Telegram\Bot\Api;
 use Telegram\Bot\BotsManager;
