@@ -5,5 +5,8 @@ return array(
         'strict' => true,
         'version' => '>=7.4.0',
     ),
-    'webasyst' => '>= 3.1',
+    'app.installer' => [
+        'version' => '3.1.0',
+        'strict' => true
+    ],
 );
