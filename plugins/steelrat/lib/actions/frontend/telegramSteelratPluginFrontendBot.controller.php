@@ -1,8 +1,8 @@
 <?php
 
-use GuzzleHttp\Client;
-use Telegram\Bot\HttpClients\GuzzleHttpClient;
+use Telegram\Bot\Exceptions\TelegramSDKException;
 use Telegram\Bot\TelegramClient;
+use Telegram\Bot\FileUpload\InputFile;
 
 /**
  * Class telegramSteelratPluginFrontendBotController
@@ -69,52 +69,7 @@ class telegramSteelratPluginFrontendBotController extends waController
     {
         $plugin = self::getPlugin();
         $this->settings = $plugin->getSettings();
-        $this->telegram = new telegramApi($this->settings['key'], false, 'guzzle');
-
-        $options = array(
-            'headers' => [
-                'User-Agent' => 'Telegram Bot PHP SDK v'.telegramApi::VERSION.' - (https://github.com/irazasyed/telegram-bot-sdk)',
-            ],
-        );
-
-        if ($this->settings['use_socks5']) {
-            $proxy = 'socks5://';
-            if (!empty($this->settings['socks5_user']) && !empty($this->settings['socks5_password'])) {
-                $proxy .= $this->settings['socks5_user'] . ':' . $this->settings['socks5_password'] . '@';
-            }
-            elseif (!empty($this->settings['socks5_user']) && empty($this->settings['socks5_password'])) {
-                $proxy .= $this->settings['socks5_user'] . '@';
-            }
-
-            if (!empty($this->settings['socks5_address']) && !empty($this->settings['socks5_port'])) {
-                $proxy .= $this->settings['socks5_address'] . ':' . $this->settings['socks5_port'];
-            }
-            else {
-                unset($proxy);
-            }
-
-            if (isset($proxy)) {
-                $options['curl'] =  array(
-                    CURLOPT_PROXY => $proxy,
-                    CURLOPT_HTTPPROXYTUNNEL => 1,
-                    CURLOPT_HEADER => false,
-                    CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_POST => 1,
-                    CURLOPT_SSL_VERIFYPEER => false,
-
-                );
-            }
-        }
-        try {
-            $httpClientHandler = $this->telegram->getGuzzleClientHandler($options);
-        }
-        catch (Exception $exception) {
-            if (waSystemConfig::isDebug()) {
-                waLog::dump($exception->getMessage(), 'telegram/steelrat-get-http-client.log');
-            }
-        }
-
-        $this->telegram->setClient(new TelegramClient($httpClientHandler));
+        $this->telegram = new telegramSteelratPluginApi();
     }
 
     /**
@@ -128,6 +83,8 @@ class telegramSteelratPluginFrontendBotController extends waController
         //Передаем в переменную $result полную информацию о сообщении пользователя
         $result = $this->telegram->getWebhookUpdate();
         $result_array = $result->toArray();
+
+        //waLog::dump($result, 'telegram/steelrat-get-webhook-update.log');
 
         $user_model = new telegramSteelratPluginUserModel();
         $book_model = new telegramSteelratPluginBookModel();
