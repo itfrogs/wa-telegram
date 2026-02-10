@@ -57,3 +57,33 @@ msgstr "Боты Telegram"
 #: /wa-apps/telegram/templates/actions/backend/BackendDefault.html:18
 msgid "Technical support for this app"
 msgstr "Техническая поддержка этого приложения"
+
+msgid "QR code"
+msgstr "QR-код"
+
+msgid "Scan the QR code or follow the link to contact support."
+msgstr "Отсканируйте QR-код или перейдите по ссылке для связи с поддержкой."
+
+msgid "Bots for your store"
+msgstr "Боты для вашего магазина"
+
+msgid "Connect Telegram bots to Shop-Script to notify customers about orders and promotions."
+msgstr "Подключите Telegram-ботов к Shop-Script для уведомления покупателей о заказах и акциях."
+
+msgid "Notifications"
+msgstr "Уведомления"
+
+msgid "Instant notifications to customers and staff about new orders, tasks, and events."
+msgstr "Мгновенные уведомления клиентам и сотрудникам о новых заказах, задачах и событиях."
+
+msgid "Chat"
+msgstr "Чат"
+
+msgid "Communicate with customers directly in Telegram — receive and reply to messages from the backend."
+msgstr "Общайтесь с клиентами прямо в Telegram — принимайте и отвечайте на сообщения из бэкенда."
+
+msgid "Authorization"
+msgstr "Авторизация"
+
+msgid "Let customers log in to your site via Telegram — fast and without passwords."
+msgstr "Дайте клиентам войти на сайт через Telegram — быстро и без паролей."

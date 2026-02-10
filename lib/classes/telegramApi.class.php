@@ -9,13 +9,13 @@
 /*
  * Подключаем вендора https://github.com/irazasyed/telegram-bot-sdk
  */
-require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.9/autoload.php';
+//require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.9/autoload.php';
 
-if (PHP_VERSION_ID >= 70400 && PHP_VERSION_ID < 80000) {
+if (PHP_VERSION_ID >= 70400 && PHP_VERSION_ID < 80100) {
     require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.9/autoload.php';
 }
-elseif (PHP_VERSION_ID >= 80000) {
-    require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.14/autoload.php';
+elseif (PHP_VERSION_ID >= 80100) {
+    require_once wa()->getAppPath('','telegram') . '/lib/vendors/telegram-bot-sdk-3.15/autoload.php';
 }
 else {
     throw new waException('PHP 7.4 or higher is required.');

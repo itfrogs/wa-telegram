@@ -9,7 +9,7 @@ return array(
         ),
     ),
     'telegram_steelrat_user' => array(
-        'chat_id' => array('int', 11, 'null' => 0),
+        'chat_id' => array('bigint', 'null' => 0),
         'name' => array('varchar', 50, 'null' => 0),
         'book_id' => array('int', 11),
         ':keys' => array(

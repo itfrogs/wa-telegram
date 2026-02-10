@@ -56,3 +56,33 @@ msgstr ""
 #: /wa-apps/telegram/templates/actions/backend/BackendDefault.html:18
 msgid "Technical support for this app"
 msgstr ""
+
+msgid "QR code"
+msgstr ""
+
+msgid "Scan the QR code or follow the link to contact support."
+msgstr ""
+
+msgid "Bots for your store"
+msgstr ""
+
+msgid "Connect Telegram bots to Shop-Script to notify customers about orders and promotions."
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "Instant notifications to customers and staff about new orders, tasks, and events."
+msgstr ""
+
+msgid "Chat"
+msgstr ""
+
+msgid "Communicate with customers directly in Telegram — receive and reply to messages from the backend."
+msgstr ""
+
+msgid "Authorization"
+msgstr ""
+
+msgid "Let customers log in to your site via Telegram — fast and without passwords."
+msgstr ""

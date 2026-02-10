@@ -1,27 +1,65 @@
 <div class="content">
     <div id="content">
+
         <div class="block">
-            <h1>{_w('Telegram bots')}</h1>
-            <h5>{$message|escape}</h5>
-            <p>
-                {$php_text}
-            </p>
+            <h1 class="a-page-header">{_w('Telegram bots')}</h1>
         </div>
 
         <div class="block">
-            <table>
-                <tr>
-                    <td width="123" height="123">
+            <div class="wa-box wa-box-padding" style="max-width: 640px;">
+
+                {* PHP version status *}
+                <div class="field-group">
+                    <p class="small">{$php_text}</p>
+                </div>
+
+                {* About the app *}
+                <div class="field-group" style="margin-top: 16px;">
+                    <p class="hint">{$message|escape}</p>
+                </div>
+
+                {* Description *}
+                <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="wa-box wa-box-padding" style="padding: 14px 16px;">
+                        <p style="margin: 0 0 4px; font-weight: 600;">&#128272; {_w('Bots for your store')}</p>
+                        <p class="hint" style="margin: 0;">{_w('Connect Telegram bots to Shop-Script to notify customers about orders and promotions.')}</p>
+                    </div>
+                    <div class="wa-box wa-box-padding" style="padding: 14px 16px;">
+                        <p style="margin: 0 0 4px; font-weight: 600;">&#128172; {_w('Chat')}</p>
+                        <p class="hint" style="margin: 0;">{_w('Communicate with customers directly in Telegram — receive and reply to messages from the backend.')}</p>
+                    </div>
+                    <div class="wa-box wa-box-padding" style="padding: 14px 16px;">
+                        <p style="margin: 0 0 4px; font-weight: 600;">&#128276; {_w('Notifications')}</p>
+                        <p class="hint" style="margin: 0;">{_w('Instant notifications to customers and staff about new orders, tasks, and events.')}</p>
+                    </div>
+                    <div class="wa-box wa-box-padding" style="padding: 14px 16px;">
+                        <p style="margin: 0 0 4px; font-weight: 600;">&#128274; {_w('Authorization')}</p>
+                        <p class="hint" style="margin: 0;">{_w('Let customers log in to your site via Telegram — fast and without passwords.')}</p>
+                    </div>
+                </div>
+
+                {* Support block *}
+                <hr class="short-hr" style="margin: 20px 0;">
+
+                <div class="flexbox space-4 align-center">
+                    <div>
                         <a href="http://itfrogs.ru/feedback/#app/telegram" target="_blank">
-                            <img src="{$wa_url}wa-apps/telegram/img/feedback.gif" width="123" height="123" border="0"
-                                 title="[`QR code`]">
+                            <img src="{$wa_url}wa-apps/telegram/img/feedback.gif" width="80" height="80" border="0"
+                                 title="{_w('QR code')}" style="border-radius: 6px; display: block;">
                         </a>
-                    </td>
-                    <td>
-                        <a href="http://itfrogs.ru/feedback/#app/telegram" target="_blank">{_w('Technical support for this app')}</a>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                    <div>
+                        <p style="margin: 0 0 6px;">
+                            <a href="http://itfrogs.ru/feedback/#app/telegram" target="_blank" class="bold">
+                                {_w('Technical support for this app')}
+                            </a>
+                        </p>
+                        <p class="hint" style="margin: 0;">{_w('Scan the QR code or follow the link to contact support.')}</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
     </div>
 </div>
