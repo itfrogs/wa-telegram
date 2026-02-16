@@ -41,3 +41,125 @@
 <p>
     На базе приложения работают готовые плагины: уведомления о заказах и чат с клиентами, авторизация, мониторинг заказов. Каждый плагин — отдельный бот со своими настройками.
 </p>
+
+<h3>Справочник методов telegramApi</h3>
+
+<p>
+    Класс <strong>telegramApi</strong> наследует <code>Telegram\Bot\Api</code> из SDK версии 3.9 (PHP 7.4) и 3.15 (PHP 8.1+).
+</p>
+
+<h4>Отправка сообщений</h4>
+<table class="wi-table">
+    <thead>
+        <tr><th>Метод</th><th>Описание</th><th>Обязательные параметры</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>sendMessage(array $params)</code></td><td>Отправить текстовое сообщение</td><td>chat_id, text</td></tr>
+        <tr><td><code>sendPhoto(array $params)</code></td><td>Отправить фото</td><td>chat_id, photo</td></tr>
+        <tr><td><code>sendDocument(array $params)</code></td><td>Отправить файл/документ</td><td>chat_id, document</td></tr>
+        <tr><td><code>sendAudio(array $params)</code></td><td>Отправить аудио</td><td>chat_id, audio</td></tr>
+        <tr><td><code>sendVideo(array $params)</code></td><td>Отправить видео (mp4)</td><td>chat_id, video</td></tr>
+        <tr><td><code>sendVoice(array $params)</code></td><td>Отправить голосовое сообщение</td><td>chat_id, voice</td></tr>
+        <tr><td><code>sendAnimation(array $params)</code></td><td>Отправить GIF или видео без звука</td><td>chat_id, animation</td></tr>
+        <tr><td><code>sendMediaGroup(array $params)</code></td><td>Отправить группу медиафайлов альбомом</td><td>chat_id, media</td></tr>
+        <tr><td><code>sendContact(array $params)</code></td><td>Отправить контакт с телефоном</td><td>chat_id, phone_number, first_name</td></tr>
+        <tr><td><code>sendPoll(array $params)</code></td><td>Отправить опрос</td><td>chat_id, question, options</td></tr>
+        <tr><td><code>sendDice(array $params)</code></td><td>Отправить кубик (случайное значение 1–6)</td><td>chat_id</td></tr>
+        <tr><td><code>sendChatAction(array $params)</code></td><td>Показать действие в чате (набор текста, загрузка…)</td><td>chat_id, action</td></tr>
+        <tr><td><code>forwardMessage(array $params)</code></td><td>Переслать сообщение</td><td>chat_id, from_chat_id, message_id</td></tr>
+        <tr><td><code>copyMessage(array $params)</code></td><td>Скопировать сообщение без ссылки на оригинал</td><td>chat_id, from_chat_id, message_id</td></tr>
+    </tbody>
+</table>
+
+<h4>Вебхук</h4>
+<table class="wi-table">
+    <thead>
+        <tr><th>Метод</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>setWebhook(array $params)</code></td><td>Установить вебхук (url — обязательно, HTTPS)</td></tr>
+        <tr><td><code>deleteWebhook()</code></td><td>Удалить вебхук, переключиться на getUpdates</td></tr>
+        <tr><td><code>getWebhookInfo()</code></td><td>Получить статус текущего вебхука</td></tr>
+        <tr><td><code>getWebhookUpdate()</code></td><td>Получить входящее обновление от Telegram</td></tr>
+    </tbody>
+</table>
+
+<h4>Получение обновлений</h4>
+<table class="wi-table">
+    <thead>
+        <tr><th>Метод</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>getUpdates(array $params)</code></td><td>Получить обновления через long polling (offset, limit, timeout)</td></tr>
+        <tr><td><code>getMe()</code></td><td>Проверить токен, получить информацию о боте</td></tr>
+    </tbody>
+</table>
+
+<h4>Редактирование и удаление сообщений</h4>
+<table class="wi-table">
+    <thead>
+        <tr><th>Метод</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>editMessageText(array $params)</code></td><td>Изменить текст отправленного сообщения</td></tr>
+        <tr><td><code>editMessageCaption(array $params)</code></td><td>Изменить подпись к медиасообщению</td></tr>
+        <tr><td><code>editMessageMedia(array $params)</code></td><td>Заменить медиафайл в сообщении</td></tr>
+        <tr><td><code>editMessageReplyMarkup(array $params)</code></td><td>Изменить inline-клавиатуру сообщения</td></tr>
+        <tr><td><code>deleteMessage(array $params)</code></td><td>Удалить сообщение (chat_id, message_id)</td></tr>
+        <tr><td><code>deleteMessages(array $params)</code></td><td>Удалить несколько сообщений за раз (до 100)</td></tr>
+    </tbody>
+</table>
+
+<h4>Клавиатуры и callback</h4>
+<table class="wi-table">
+    <thead>
+        <tr><th>Метод</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>replyKeyboardMarkup(array $params)</code></td><td>Создать reply-клавиатуру (keyboard, resize_keyboard, one_time_keyboard)</td></tr>
+        <tr><td><code>replyKeyboardHide(array $params)</code></td><td>Скрыть reply-клавиатуру</td></tr>
+        <tr><td><code>forceReply(array $params)</code></td><td>Принудительный запрос ответа от пользователя</td></tr>
+        <tr><td><code>answerCallbackQuery(array $params)</code></td><td>Ответить на нажатие кнопки inline-клавиатуры</td></tr>
+        <tr><td><code>answerInlineQuery(array $params)</code></td><td>Ответить на inline-запрос (до 50 результатов)</td></tr>
+    </tbody>
+</table>
+
+<h4>Файлы</h4>
+<table class="wi-table">
+    <thead>
+        <tr><th>Метод</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>getFile(array $params)</code></td><td>Получить информацию о файле по file_id для скачивания</td></tr>
+        <tr><td><code>getUserProfilePhotos(array $params)</code></td><td>Получить список фотографий профиля пользователя</td></tr>
+    </tbody>
+</table>
+
+<h4>Команды бота</h4>
+<table class="wi-table">
+    <thead>
+        <tr><th>Метод</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>setMyCommands(array $params)</code></td><td>Установить список команд бота</td></tr>
+        <tr><td><code>getMyCommands(array $params)</code></td><td>Получить текущий список команд</td></tr>
+        <tr><td><code>deleteMyCommands(array $params)</code></td><td>Удалить список команд</td></tr>
+    </tbody>
+</table>
+
+<h4>Низкоуровневые методы</h4>
+<table class="wi-table">
+    <thead>
+        <tr><th>Метод</th><th>Описание</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>telegramPost($endpoint, $params, $fileUpload)</code></td><td>Прямой POST-запрос к Telegram API</td></tr>
+        <tr><td><code>telegramGet($endpoint, $params)</code></td><td>Прямой GET-запрос к Telegram API</td></tr>
+        <tr><td><code>getBot($config)</code></td><td>Получить BotsManager для управления несколькими ботами</td></tr>
+        <tr><td><code>getGuzzleClientHandler($options)</code></td><td>Получить GuzzleHttpClient с кастомными настройками</td></tr>
+    </tbody>
+</table>
+
+<p>
+    Полная документация: <a href="https://telegram-bot-sdk.com/docs/getting-started/introduction" target="_blank">telegram-bot-sdk.com</a> и <a href="https://core.telegram.org/bots/api" target="_blank">core.telegram.org/bots/api</a>.
+</p>
